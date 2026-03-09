@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "question": "How do I authenticate with the TaskFlow API?",
+    "ground_truth_answer": "Pass an API key in the X-API-Key header with every request.",
+    "source_passage": "Authentication is handled via API keys passed in the X-API-Key header.",
+    "source_file": "api_reference.md"
+  },
+  {
+    "id": 2,
+    "question": "What are the valid task states in TaskFlow?",
+    "ground_truth_answer": "open, in_progress, review, done, and archived.",
+    "source_passage": "The task state machine supports five states: open, in_progress, review, done, and archived.",
+    "source_file": "project_overview.md"
+  },
+  {
+    "id": 3,
+    "question": "How do I install TaskFlow?",
+    "ground_truth_answer": "Clone the repo, create a venv, pip install -r requirements.txt, flask db upgrade, flask create-admin, flask run --debug.",
+    "source_passage": "Clone the repository... Create a virtual environment... Install dependencies... Initialize the database...",
+    "source_file": "getting_started.md"
+  },
+  {
+    "id": 4,
+    "question": "What is the maximum request body size?",
+    "ground_truth_answer": "1 MB (1,048,576 bytes), configurable via MAX_CONTENT_LENGTH environment variable.",
+    "source_passage": "The default maximum request body size is 1 MB (1,048,576 bytes).",
+    "source_file": "faq.md"
+  },
+  {
+    "id": 5,
+    "question": "Can a task go directly from open to done?",
+    "ground_truth_answer": "No. Tasks must follow the state machine: open → in_progress → review → done. Skipping states is not allowed.",
+    "source_passage": "a task cannot move directly from open to done without passing through in_progress.",
+    "source_file": "project_overview.md"
+  },
+  {
+    "id": 6,
+    "question": "What database does TaskFlow use in production?",
+    "ground_truth_answer": "PostgreSQL is recommended for production. SQLite is the default for development.",
+    "source_passage": "SQLite (development), PostgreSQL (production)",
+    "source_file": "project_overview.md"
+  },
+  {
+    "id": 7,
+    "question": "What was fixed in version 2.3.0?",
+    "ground_truth_answer": "Fixed race condition in concurrent task updates, fixed pagination incorrect total count with filters, fixed API key validation case sensitivity.",
+    "source_passage": "Fixed race condition in concurrent task updates... Fixed pagination returning incorrect total count... Fixed API key validation not being case-insensitive...",
+    "source_file": "changelog.md"
+  },
+  {
+    "id": 8,
+    "question": "What is the API rate limit?",
+    "ground_truth_answer": "100 requests per minute per API key. Returns 429 with Retry-After header when exceeded.",
+    "source_passage": "The API enforces rate limits of 100 requests per minute per API key.",
+    "source_file": "api_reference.md"
+  },
+  {
+    "id": 9,
+    "question": "How does TaskFlow handle concurrent updates to the same task?",
+    "ground_truth_answer": "Optimistic concurrency control with a version field. Include the current version in update requests; mismatches return 409 Conflict.",
+    "source_passage": "TaskFlow uses optimistic concurrency control. Each task has a version field that is incremented on every update.",
+    "source_file": "faq.md"
+  },
+  {
+    "id": 10,
+    "question": "What fields are required when creating a new task?",
+    "ground_truth_answer": "Only title is required (string, 1-200 characters). All other fields are optional.",
+    "source_passage": "Required fields: title (string, 1-200 characters)",
+    "source_file": "api_reference.md"
+  }
+]
